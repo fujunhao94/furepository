@@ -49,6 +49,8 @@ git push <远程主机名>  <本地分支名>：<远程分支名>
 git push origin master  关联之后推送命令的简化         
 
 
+git fetch [remote-name]   从远程仓库抓取全部分支数据
+
 git branch --set-upstream-to=origin/<远程分支名>                   将本地分支关联到远程分支上 
 
 
@@ -65,10 +67,11 @@ git clone -b  <远程仓库分支> <源码的仓库地址>
 
 git remote -v  查看远程仓库的详细信息
 
-git remote rm  origin       删除名字为origin的远程仓库
+git remote rm  origin       删除名字为origin的关联远程仓库
 
+git remote add [shortname] [url]  添加远程仓库
 
-
+git remote    查看当前远程库 
 
 
 创建新分支
