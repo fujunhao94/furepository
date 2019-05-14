@@ -1,0 +1,138 @@
+
+mkdir (目录名)： 创建目录  
+
+reset   清空git命令屏幕
+
+cd   切换传达
+
+pwd   查看当前目录
+
+
+git init    将当前目录变为git可以管理的仓库
+
+
+将一个文件放入至git仓库需要两步，添加的文件必须放在仓库下:
+第一步： 把文件添加到仓库       git add file(文件名)  可以添加多个文件名
+第二步： 把文件提交至仓库：     git commit -m “说明”    -m后面输入的是本次提交的说明
+
+
+
+git status     查看仓库当前的状态
+git diff 文件名        查看文件具体修改的内容
+git log --pretty=oneline       查看提交的日志[只会留下commit  id (版本号 (用SHA1字串表示))和 提交版本时的描述信息] 
+git log --graph --pretty=oneline --abbrev-commit
+
+git log 退出方法       英文状态按Q
+
+git reset --hard HEAD^   回退版本至上个版本
+
+git reset  回退版本
+HEAD   代表当前版本，^  一个代表上个版本， 100个代表往上100个版本
+
+git reset --hard （commit 的id）     回退到指定的版本
+
+git reflog      查看记录的commit的id
+
+
+
+删除文件操作
+git rm file 或者（rm ‘file’）
+再git commit
+
+
+
+git remote add origin git@GitHub.com:GitHub用户名/远程仓库名     本地库关联远程仓库（并远程库的名称为：origin）
+
+git push -u origin master    把本地库的内容推送到远程，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来
+
+git push <远程主机名>  <本地分支名>：<远程分支名>
+git push origin master  关联之后推送命令的简化         
+
+
+git branch --set-upstream-to=origin/<远程分支名>                   将本地分支关联到远程分支上 
+
+
+远程分支的删除
+1、git push <远程主机名> --detete <删除分支名>
+2、git push <远程主机名>   :<远程分支名>    省略本地分支名相当于推送了一个空的本地分支到远程分支上，就相当于删除了远程分支
+
+
+
+
+git clone git@GitHub.com:GitHub用户名/远程仓库名        本地库克隆远程仓库
+
+git clone -b  <远程仓库分支> <源码的仓库地址>
+
+git remote -v  查看远程仓库的详细信息
+
+git remote rm  origin       删除名字为origin的远程仓库
+
+
+
+
+
+创建新分支
+
+git checkout -b dev         -b 参数表示创建成功之后并切换到分支上
+
+git branch                     查看分支
+
+git branch <name>                创建分支
+ 
+git checkout <name>            表示切换分支
+
+git merge <name>          合并指定分支到当前分支
+
+git branch -d <name>             删除指定分支名(参数-D代表强制删除分支)
+
+
+
+git stash     将当前的工作现场“储存”
+
+git stash list     查看被“储存”的工作现场
+
+git stash pop        恢复的同时把stash内容也删了
+
+git stash list     查看，就看不到任何stash内容了
+
+git stash apply stash@{0}   恢复指定的“储存”工作现场
+
+git stash clear    清空储藏全部的列表内容
+
+git stash drop stash@{0}     删除第一队列
+
+
+git checkout -b dev origin/dev    本地创建远程dev分支代码
+
+
+
+多人协作的工作模式通常是这样：
+1、首先，可以试图用git push origin <branch-name>推送自己的修改；
+
+2、如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
+
+3、如果合并有冲突，则解决冲突，并在本地提交；
+
+4、没有冲突或者解决掉冲突后，再用git push origin <branch-name>推送就能成功！
+
+如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream-to <branch-name> origin/<branch-name>。
+
+
+
+命令git tag <tagname>用于新建一个标签，默认为HEAD，也可以指定一个commit id；
+
+命令git tag -a <tagname> -m "blablabla..."可以指定标签信息；用-a指定标签名，-m指定说明文字
+
+命令git tag可以查看所有标签。
+
+标签不是按时间顺序列出，而是按字母排序的。可以用git show <tagname>查看标签信息：
+命令git push origin <tagname>可以推送一个本地标签；
+
+命令git push origin --tags可以推送全部未推送过的本地标签；
+
+命令git tag -d <tagname>可以删除一个本地标签；
+
+命令git push origin :refs/tags/<tagname>可以删除一个远程标签。（删除远程标签需要先删除本地标签，再删除远程标签）
+
+
+命令指令配置别名：  git config --global alias.co checkout             将checkout配置别名co
