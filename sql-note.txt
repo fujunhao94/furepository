@@ -142,7 +142,7 @@ insert ignore into <表名> (列名1，列名2....) values(值1，值2....）
 
 　　　
 
-3).在查询中使用ＡＳ更改列名
+3).在查询中使用as更改列名
 
 　　　　
 例：select name as 姓名　from a where gender='男'
@@ -226,7 +226,7 @@ select * from a where rownum<6　　　
 
 　
 
-3).使用in在列举值内进行查询(in后是多个的数据)
+3).使用in进行多个值查询(in后是多个的数据)
 
 
 例：select name from a where address in ('北京','上海','唐山')
