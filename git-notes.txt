@@ -139,3 +139,9 @@ git checkout -b dev origin/dev    本地创建远程dev分支代码
 
 
 命令指令配置别名：  git config --global alias.co checkout             将checkout配置别名co
+
+
+
+本地提交到远程仓库：
+1、当提示failed to push some refs to git，主要原因是github中的README.md文件不在本地代码目录中，
+2、通过 git pull --rebase origin master
